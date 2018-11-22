@@ -1,0 +1,13 @@
+create database classroom;
+use classroom;
+create table person(id int AUTO_INCREMENT NOT NULL, name varchar(255), seat_col int, seat_row int, dob date, gender char(1), primary key(id));
+show columns in person;
+insert into person (name, seat_col, seat_row, dob, gender) values ('Matt', 3, 1, '1996-06-09', 'M');
+alter table person add team varchar(255);
+update person set team = 'Confidential Consulting' where seat_row = 1;
+select * from person;
+delete from person where id = 1;
+drop database classroom;
+
+
+

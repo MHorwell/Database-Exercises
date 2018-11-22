@@ -1,0 +1,46 @@
+mysql> create database classroom;
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> use classroom;
+Database changed
+mysql> create table person(id int AUTO_INCREMENT NOT NULL, name varchar(255), seat_col int, seat_row int, dob date, gender char(1), primary key(id));
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> show columns in person;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(255) | YES  |     | NULL    |                |
+| seat_col | int(11)      | YES  |     | NULL    |                |
+| seat_row | int(11)      | YES  |     | NULL    |                |
+| dob      | date         | YES  |     | NULL    |                |
+| gender   | char(1)      | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into person (name, seat_col, seat_row, dob, gender) values ('Matt', 3, 1, '1996-06-09', 'M');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> alter table person add team varchar(255);
+Query OK, 0 rows affected (0.50 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update person set team = 'Confidential Consulting' where seat_row = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from person;
++----+------+----------+----------+------------+--------+-------------------------+
+| id | name | seat_col | seat_row | dob        | gender | team                    |
++----+------+----------+----------+------------+--------+-------------------------+
+|  1 | Matt |        3 |        1 | 1996-06-09 | M      | Confidential Consulting |
++----+------+----------+----------+------------+--------+-------------------------+
+1 row in set (0.00 sec)
+
+mysql> delete from person where id = 1;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> drop database classroom;
+Query OK, 1 row affected (0.16 sec)
